@@ -91,6 +91,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Javascript",
         "Python",
         "SQL",
+        "Docker",
         "Git",
         // Add more skills as needed
     ];
