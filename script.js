@@ -85,13 +85,13 @@ document.addEventListener("DOMContentLoaded", function() {
     // Technical Skills
     const skillsData = [
         "Cloud Fundamentals",
-        "AWS Services",
+        "AWS Core Services",
+        "Python",
+        "AWS SDK",
         "HTML",
         "CSS",
         "Javascript",
-        "Python",
         "SQL",
-        "Docker",
         "Git",
         // Add more skills as needed
     ];
