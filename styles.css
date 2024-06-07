@@ -152,7 +152,7 @@ header h1 {
     margin-right: 10px;
 }
 
-.technology, .program, .employment {
+.technology, .program, .employment, .project {
     font-weight: bold;
     font-size: large;
 }
@@ -175,6 +175,16 @@ header h1 {
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
+/* Add this CSS to your stylesheet */
+.project-details {
+    max-height: 150px; /* Adjust this value as needed */
+    overflow-y: auto;
+    white-space: normal; /* Ensures text wraps */
+    word-wrap: break-word; /* Ensures long words break properly */
+}
+
+
 
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
@@ -233,7 +243,7 @@ header h1 {
         margin-right: 20px;
     }
 
-    .technology, .program, .employment {
+    .technology, .program, .employment, .project {
         font-weight: bold;
         font-size: 13px;
     }
