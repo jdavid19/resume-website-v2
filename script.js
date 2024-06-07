@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const certificationTimeline = document.getElementById("certification-timeline");
     const employmentTimeline = document.getElementById("employment-timeline");
     const skillsList = document.getElementById("skills-list");
+    const projectTimeline = document.getElementById("project-timeline")
 
 
     // Objective section
@@ -106,10 +107,64 @@ document.addEventListener("DOMContentLoaded", function() {
         skillsSpan.classList.add("techskills");
         // Set the text content of the list item
         item.innerHTML = `${skillsSpan.outerHTML}`;
-        // Append the list item to the employmentTimeline
+        // Append the list item to the skillsList
         skillsList.appendChild(item);
     });
 
+
+    // Technical Project Timeline
+    const projectData = [
+        { name: "jd-espiritu.website", 
+        details: "Built a static website with a Continuous Deployment Pipeline from Github to S3 using the following AWS Services: AWS CodePipeline, Amazon S3, Amazon Route 53, AWS Certificate Manager, and Amazon CloudFront.",
+        github_link: "https://github.com/jdavid19/resume-website-v2/tree/main"
+    },
+        { name: "Python Project with Boto3", 
+        details: "A Python application that utilizes the Boto3 library (AWS SDK for Python) to interact with various AWS services programmatically. The application is based on my resume website.",
+        github_link: "https://github.com/jdavid19/codepipeline-resume-website"
+    },
+        // Add more project data as needed
+    ];
+
+    projectData.forEach(project => {
+        // Create list item
+        const item = document.createElement("li");
+    
+        // Create a span for the project name and set its text content
+        const projectSpan = document.createElement("span");
+        projectSpan.textContent = project.name;
+        
+        // Add a class to the span for styling
+        projectSpan.classList.add("project");
+        
+        // Create a paragraph for the project details
+        const projectDetails = document.createElement("p");
+        projectDetails.classList.add("project-details"); // Add class for styling
+        const detailsText = document.createTextNode(project.details);
+        projectDetails.appendChild(detailsText);
+    
+        // Create a paragraph for the GitHub link
+        const githubLinkParagraph = document.createElement("p");
+        const githubLink = document.createElement("a");
+        githubLink.href = project.github_link;
+        githubLink.textContent = "Link to GitHub repository";
+        githubLink.target = "_blank"; // Set the link to open in a new tab
+        
+        // Append the anchor to the new paragraph
+        githubLinkParagraph.appendChild(githubLink);
+        
+        // Append the span, project details paragraph, and GitHub link paragraph to the list item
+        item.appendChild(projectSpan);
+        item.appendChild(projectDetails);
+        item.appendChild(githubLinkParagraph);
+        
+        // Append the list item to the projectTimeline
+        projectTimeline.appendChild(item);
+    });
+    
+    
+    
+    
+    
     
 });
 
