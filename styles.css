@@ -1,4 +1,3 @@
-/* Common styles for all screen sizes */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -63,7 +62,6 @@ header h1 {
     font-size: 38px;
     font-weight:800;
     color: #333;
-    /* padding-right: 20px; */
     margin-left: 10px;
     margin-right: 50px;
     width: 100%;
@@ -138,7 +136,7 @@ header h1 {
 .timeline li {
     margin-bottom: 15px;
     white-space: pre;
-    line-height: 30px;
+    line-height: 2;
     text-align: justify;
 }
 
@@ -155,6 +153,11 @@ header h1 {
 .technology, .program, .employment, .project {
     font-weight: bold;
     font-size: large;
+}
+
+.objective {
+    font-size: large;
+    line-height: 1.5;
 }
 
 .techskills {
@@ -176,12 +179,20 @@ header h1 {
     margin-bottom: 10px;
 }
 
-/* Add this CSS to your stylesheet */
+
 .project-details {
-    max-height: 150px; /* Adjust this value as needed */
-    overflow-y: auto;
-    white-space: normal; /* Ensures text wraps */
-    word-wrap: break-word; /* Ensures long words break properly */
+    margin: 10px;
+    max-height: 150px;
+    white-space: normal;
+    word-wrap: break-word;
+    font-size: medium;
+}
+
+
+.employment-details, .certification-details, .program-details {
+    margin: 0;
+    max-height: 100px;
+    font-size: medium;
 }
 
 
@@ -248,8 +259,16 @@ header h1 {
         font-size: 13px;
     }
 
+    .objective {
+        font-size: 13px;
+    }
+
     .techskills {
         font-size: small;
+    }
+
+    .project-details {
+        margin: 10px;
     }
 
 }

@@ -10,7 +10,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Objective section
     const item = document.createElement("p");
     const objectiveText = document.createTextNode("An Aspiring Cloud Engineer, seeking an entry-level position where skills in cloud-based development can be utilized for career advancement.");
-    item.appendChild(objectiveText);
+    const objectiveSpan = document.createElement("span");
+    objectiveSpan.classList.add("objective");
+    objectiveSpan.appendChild(objectiveText);
+    item.appendChild(objectiveSpan);
     objective.appendChild(item);
 
     // Education Timeline
@@ -27,18 +30,27 @@ document.addEventListener("DOMContentLoaded", function() {
         const programSpan = document.createElement("span");
         // Add a class to the span for styling
         programSpan.classList.add("program");
+        programDetails = document.createElement("p")
+        // Add a class to the paragraph for styling
+        programDetails.classList.add("program-details")
 
         if (typeof edu.program === 'object') {
             programSpan.textContent = edu.program.course;
-            item.innerHTML = `${programSpan.outerHTML}\n    ${edu.program.major}\n    ${edu.name}\n    (${edu.startDate} - ${edu.endDate})`;
-            
+            const detailsText = document.createTextNode(edu.program.major + "\n" + edu.name + "\n")
+            const detailsText2 = document.createTextNode(`${edu.startDate} - ${edu.endDate}`)
+            programDetails.appendChild(detailsText)
+            programDetails.appendChild(detailsText2)
         } else {
             programSpan.textContent = edu.program;
-            item.innerHTML = `${programSpan.outerHTML}\n    ${edu.name}\n    (${edu.startDate} - ${edu.endDate})`;
+            const detailsText = document.createTextNode(edu.name + "\n")
+            const detailsText2 = document.createTextNode(`${edu.startDate} - ${edu.endDate}`)
+            programDetails.appendChild(detailsText)
+            programDetails.appendChild(detailsText2)
         }
+        item.appendChild(programSpan)
+        item.appendChild(programDetails)
         educationTimeline.appendChild(item);
 
-        
     });
 
     // Certification Timeline
@@ -49,16 +61,24 @@ document.addEventListener("DOMContentLoaded", function() {
 
     certificationData.forEach(cert => {
         const item = document.createElement("li");
-    
-        // Create a span for the technology and set its text content
+        
+        // Create a span for the employment and set its text content
         const technologySpan = document.createElement("span");
         technologySpan.textContent = cert.technology;
         // Add a class to the span for styling
         technologySpan.classList.add("technology");
-    
         // Set the text content of the list item
-        item.innerHTML = `${technologySpan.outerHTML}\n    ${cert.name}\n    (${cert.startDate} - ${cert.endDate})`;
-    
+        certDetails = document.createElement("p")
+        // Add a class to the paragraph for styling
+        certDetails.classList.add("certification-details")
+        
+        const detailsText = document.createTextNode(cert.name + "\n")
+        const detailsText2 = document.createTextNode(`${cert.startDate} - ${cert.endDate}`)
+        certDetails.appendChild(detailsText)
+        certDetails.appendChild(detailsText2)
+
+        item.appendChild(technologySpan)
+        item.appendChild(certDetails)
         // Append the list item to the certificationTimeline
         certificationTimeline.appendChild(item);
     });
@@ -69,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add more employment data as needed
     ];
 
+
     employmentData.forEach(emp => {
         const item = document.createElement("li");
         
@@ -78,7 +99,17 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add a class to the span for styling
         employmentSpan.classList.add("employment");
         // Set the text content of the list item
-        item.innerHTML = `${employmentSpan.outerHTML}\n    ${emp.company}\n    (${emp.startDate} - ${emp.endDate})`;
+        employmentDetails = document.createElement("p")
+        // Add a class to the paragraph for styling
+        employmentDetails.classList.add("employment-details")
+
+        const detailsText = document.createTextNode(emp.company + "\n")
+        const detailsText2 = document.createTextNode(`${emp.startDate} - ${emp.endDate}`)
+        employmentDetails.appendChild(detailsText)
+        employmentDetails.appendChild(detailsText2)
+
+        item.appendChild(employmentSpan)
+        item.appendChild(employmentDetails)
         // Append the list item to the employmentTimeline
         employmentTimeline.appendChild(item);
     });
@@ -106,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add a class to the span for styling
         skillsSpan.classList.add("techskills");
         // Set the text content of the list item
-        item.innerHTML = `${skillsSpan.outerHTML}`;
+        item.appendChild(skillsSpan)
         // Append the list item to the skillsList
         skillsList.appendChild(item);
     });
@@ -128,43 +159,33 @@ document.addEventListener("DOMContentLoaded", function() {
     projectData.forEach(project => {
         // Create list item
         const item = document.createElement("li");
-    
         // Create a span for the project name and set its text content
         const projectSpan = document.createElement("span");
         projectSpan.textContent = project.name;
-        
         // Add a class to the span for styling
         projectSpan.classList.add("project");
-        
         // Create a paragraph for the project details
         const projectDetails = document.createElement("p");
         projectDetails.classList.add("project-details"); // Add class for styling
         const detailsText = document.createTextNode(project.details);
-        projectDetails.appendChild(detailsText);
-    
-        // Create a paragraph for the GitHub link
-        const githubLinkParagraph = document.createElement("p");
+        const breakElement = document.createElement("br")
+        
         const githubLink = document.createElement("a");
         githubLink.href = project.github_link;
         githubLink.textContent = "Link to GitHub repository";
         githubLink.target = "_blank"; // Set the link to open in a new tab
+
+        projectDetails.appendChild(detailsText);
+        projectDetails.appendChild(breakElement);
+        projectDetails.appendChild(githubLink)
         
-        // Append the anchor to the new paragraph
-        githubLinkParagraph.appendChild(githubLink);
-        
-        // Append the span, project details paragraph, and GitHub link paragraph to the list item
+        // Append the span, project details
         item.appendChild(projectSpan);
         item.appendChild(projectDetails);
-        item.appendChild(githubLinkParagraph);
         
         // Append the list item to the projectTimeline
         projectTimeline.appendChild(item);
     });
-    
-    
-    
-    
-    
     
 });
 
