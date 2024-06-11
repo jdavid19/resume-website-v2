@@ -4,6 +4,10 @@ This guide will walk you through the process of setting up a pipeline using AWS 
 
 In this project, I created a resume website to be used for deployment. You can check it out here: [jd-espiritu.website](https://jd-espiritu.website)
 
+## Architecture
+
+![Diagram](https://i.imgur.com/oF8Isih.png)
+
 ## Prerequisites
 
 Before you begin, make sure you have the following:
