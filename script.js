@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Objective section
     const item = document.createElement("p");
-    const objectiveText = document.createTextNode("An Aspiring Cloud Engineer, seeking an entry-level position where skills in cloud-based development can be utilized for career advancement.");
+    const objectiveText = document.createTextNode("A dedicated AWS Cloud Practitioner, seeking an entry-level position where skills in cloud-based development can be utilized for career advancement.");
     const objectiveSpan = document.createElement("span");
     objectiveSpan.classList.add("objective");
     objectiveSpan.appendChild(objectiveText);
