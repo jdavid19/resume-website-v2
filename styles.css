@@ -104,6 +104,8 @@ nav ul li:hover::after{
     align-items: center;
     justify-content: center;
     line-height: 2;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
 }
 
 main h1 {
@@ -171,7 +173,6 @@ main h2 {
 .contact-container a:hover {
     color: #bbbbbb;
 }
-
 
 #counter {
     font-size: 14px;
@@ -292,14 +293,6 @@ main h2 {
     color: #bbbbbb;
 }
 
-
-/* Page Transition */
-.page {
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out;
-}
-
-
 /* Media Query for mobile screens */
 @media (max-width: 600px) {
     .hamburger {
@@ -369,6 +362,9 @@ main h2 {
         flex-grow: 1; 
         display: inline-block;
         text-align: center;
+    }
+    .page {
+        height: 100dvh;
     }
 }
 
