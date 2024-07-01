@@ -3,69 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume - John David Espiritu</title>
+    <title>JD Espiritu</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="profile">
-                <img src="images/headshot.jpg" alt="Headshot">
-                <div class="contact-info">
-                    <h1>JOHN DAVID ESPIRITU</h1>
-                    <ul class="contact-icons">
-                        <li><img src="images/icons8-phone-contact.png" alt="ContactNumber">09152366945</li>
-                        <li><a href="mailto:jdavidce19@gmail.com"><img src="images/icons8-gmail.png" alt="Email">jdavidce19@gmail.com</a></li>
-                        <li><a href="https://www.linkedin.com/in/jd-espiritu" target="_blank" rel="noopener noreferrer"><img src="images/icons8-linkedin.png" alt="LinkedIn">linkedin.com/in/jd-espiritu</a></li>
-                        <li><a href="https://github.com/jdavid19" target="_blank" rel="noopener noreferrer"><img src="images/github-icon.png" alt="Github">github.com/jdavid19</a></li>
-                        <li><img src="images/icons8-address.png" alt="Address">Quezon City</li>
-                    </ul>
-                </div>
-                <div class="badges">
-                    <ul>
-                        <li><a href="https://www.credly.com/badges/26ea0065-4ea6-46e5-81d9-1306c07ee08d/linked_in_profile" target="_blank" rel="noopener noreferrer"><img src="images/aws-certified-cloud-practitioner.png" alt="aws-certified-cloud-practitioner" title="Click badge to validate."></a></li>
-                        <li><a href="https://www.credly.com/badges/a7e43dc5-f1b6-4a9f-a65f-ab583743947b/linked_in_profile" target="_blank" rel="noopener noreferrer"><img src="images/aws-re-start-graduate.png" alt="aws-re-start-graduate" title="Click badge to validate."></a></li>
-                    </ul>
-                </div>
+    <header class="header">
+        <nav id="navMenu" class="nav-menu">
+            <div class="hamburger" id="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-        </header>
-        <section class="resume-section" id="objective">
-            <h2>OBJECTIVE</h2>
-            <div class="timeline" id="objective-details">
-                <!-- Summary section will be populated dynamically by JavaScript -->
-            </div>
-        </section>
-        <section class="resume-section" id="education">
-            <h2>EDUCATION</h2>
-            <div class="timeline" id="education-timeline">
-                <!-- Education timeline will be populated dynamically by JavaScript -->
-            </div>
-        </section>
-        <section class="resume-section" id="certification">
-            <h2>CERTIFICATION</h2>
-            <div class="timeline" id="certification-timeline">
-                <!-- Certification timeline will be populated dynamically by JavaScript -->
-            </div>
-        </section>
-        <section class="resume-section" id="techskills">
-            <h2>TECHNICAL SKILLS</h2>
-            <ul id="skills-list">
-                <!-- Skills list will be populated dynamically by JavaScript -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="resume/resume.html" target="_blank">Resume</a></li>
             </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home" class="page">
+            <h1>Hi, I'm JD</h1>
+            <div id="counter">and this page has been viewed <span id="view-count"></span> times.</div>
+            <div class="contact-icons">
+                <a href="https://github.com/jdavid19" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jd-espiritu" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
         </section>
-        <section class="resume-section" id="techproject">
-            <h2>PERSONAL PROJECTS</h2>
-            <div class="timeline" id="project-timeline">
-                <!-- Project timeline will be populated dynamically by JavaScript -->
+        <section id="about" class="page">
+            <h2>About Me</h2>
+            <br>
+            <div class="container">
+                <p>Hello! I'm John David Espiritu, a dedicated AWS Cloud Practitioner with a passion for leveraging cloud technologies to drive innovation and efficiency.</p>
             </div>
-        </section>  
-        <section class="resume-section" id="employment">
-            <h2>EMPLOYMENT HISTORY</h2>
-            <div class="timeline" id="employment-timeline">
-                <!-- Employment timeline will be populated dynamically by JavaScript -->
+            <div class="btn-container">
+                <a href="resume/resume.html" target="_blank"><button class="resume-button">View Resume</button></a>
             </div>
-        </section>   
-    </div>
+        </section>
+        <section id="contact" class="page">
+            <h2>Contact Me</h2>
+            <br>
+            <div class="contact-container">
+                <i class="fa-solid fa-envelope"></i>
+                <p><a href="mailto:jdavidce19@gmail.com">jdavidce19@gmail.com</a></p>
+                <i class="fa-solid fa-phone"></i><i class="fa-brands fa-viber"></i>
+                <p><a href="tel:+639152366945">09152366945</a></p>
+                <i class="fab fa-linkedin"></i>
+                <p><a href="https://linkedin.com/in/jd-espiritu" target="_blank">LinkedIn</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h2>About My Website</h2>
+                <p>This project is a static website with a Continuous Deployment Pipeline from Github to Amazon S3 using AWS CodePipeline.</p>
+                <p>It utilizes other AWS services like Amazon Route 53 for DNS management, AWS Certificate Manager to ensure HTTPS traffic, and Amazon CloudFront for content delivery.</p>
+                <p>It also has a page views counter using AWS Lambda, API Gateway, and DynamoDB.</p>
+            </div>
+            <div class="footer-contacts">
+                <h2>Contact & Socials</h2>
+                <ul>
+                    <li>Email: <a href="mailto:jdavidce19@gmail.com">jdavidce19@gmail.com</a></li>
+                    <li>Phone/Viber: <a href="tel:+639152366945">09152366945</a></li>
+                    <li>LinkedIn: <a href="https://www.linkedin.com/in/jd-espiritu" target="_blank">linkedin.com/in/jd-espiritu</a></li>
+                    <li>GitHub: <a href="https://github.com/jdavid19" target="_blank">github.com/jdavid19</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="resume/resume.html" target="_blank">Resume</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="backToTop" class="back-to-top">
+            
+            <a href="#top" alt="Back to Top" title="Back to Top"><i class="fa fa-chevron-up"></i></a>
+            
+        </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
