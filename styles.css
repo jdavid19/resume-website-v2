@@ -94,7 +94,7 @@ nav ul li:hover::after{
 
 .page {
     padding-top: 4vh;
-    height: 96vh;
+    height: 100vh;
     box-sizing: border-box;
     min-height: fit-content;
     text-align: center;
