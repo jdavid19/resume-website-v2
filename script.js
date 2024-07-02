@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
    // View Counter
     async function updateCounter(page) {
         try {
-            const response = await fetch(`https://api.jd-espiritu.website/prod/counter?page=${page}`)
+            const response = await fetch(`https://api.jd-espiritu.website/counter?page=${page}`)
             if (response.ok) {
                 const data = await response.json();
                 const counterElement = document.getElementById('view-count');
