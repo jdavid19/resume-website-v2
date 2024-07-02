@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: "jd-espiritu.website", 
         details: `Built a static website with a Continuous Deployment Pipeline from Github to Amazon S3 using AWS CodePipeline. 
                 It utilizes other AWS services like Amazon Route 53 for DNS management, AWS Certificate Manager to ensure HTTPS traffic, and Amazon CloudFront for content delivery. 
-                It also has a page views counter using AWS Lambda, API Gateway, and DynamoDB.`,
+                The site also has a page views counter using AWS Lambda, API Gateway, and DynamoDB.`,
         github_link: "https://github.com/jdavid19/resume-website-v2/tree/main"
     },
         { name: "Python Project with Boto3", 
