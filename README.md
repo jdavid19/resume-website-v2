@@ -6,7 +6,7 @@ In this project, I created a resume website to be used for deployment. You can c
 
 ## Architecture
 
-![Diagram](https://i.imgur.com/oF8Isih.png)
+![Diagram](https://i.imgur.com/8ytQX6j.png)
 
 ## Prerequisites
 
