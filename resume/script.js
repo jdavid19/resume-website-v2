@@ -9,10 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Objective section
     const item = document.createElement("p");
     const objectiveText = document.createTextNode("A dedicated AWS Cloud Practitioner, seeking an entry-level position where skills in cloud-based development can be utilized for career advancement.");
-    const objectiveSpan = document.createElement("span");
-    objectiveSpan.classList.add("objective");
-    objectiveSpan.appendChild(objectiveText);
-    item.appendChild(objectiveSpan);
+    item.classList.add("objective");
+    item.appendChild(objectiveText);
     objective.appendChild(item);
 
     // Education Timeline
@@ -23,13 +21,13 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     educationData.forEach(edu => {
-        const item = document.createElement("li");
+        const item = document.createElement("div");
         
         // Create a span for the program-course and set its text content
         const programSpan = document.createElement("span");
         // Add a class to the span for styling
         programSpan.classList.add("program");
-        programDetails = document.createElement("p")
+        programDetails = document.createElement("li")
         // Add a class to the paragraph for styling
         programDetails.classList.add("program-details")
 
@@ -59,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     certificationData.forEach(cert => {
-        const item = document.createElement("li");
+        const item = document.createElement("div");
         
         // Create a span for the employment and set its text content
         const technologySpan = document.createElement("span");
@@ -67,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add a class to the span for styling
         technologySpan.classList.add("technology");
         // Set the text content of the list item
-        certDetails = document.createElement("p")
+        certDetails = document.createElement("li")
         // Add a class to the paragraph for styling
         certDetails.classList.add("certification-details")
         
@@ -115,6 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function createToggleText(clickableText, textsToShow, iconClass1, iconClass2) {
         // Create a div element to act as the container
         const container = document.createElement('div');
+        container.classList.add('project-details-section');
         
         // Create a span element for the clickable text
         const clickableSpan = document.createElement('span');
@@ -183,31 +182,32 @@ document.addEventListener("DOMContentLoaded", function() {
     // Technical Project Timeline
     const projectData = [
         { name: "jd-espiritu.website", 
-        details: `Built a static website with a Continuous Deployment Pipeline from Github to Amazon S3 using AWS CodePipeline. 
-                It utilizes other AWS services like Amazon Route 53 for DNS management, AWS Certificate Manager to ensure HTTPS traffic, and Amazon CloudFront for content delivery. 
-                The site also has a page views counter using AWS Lambda, API Gateway, and DynamoDB.`,
+        details: ["Built a static website with automated deployment from GitHub to Amazon S3 using AWS CodePipeline", 
+                "Utilized Amazon Route 53 to manage DNS, AWS Certificate Manager to handle HTTPS traffic, and Amazon CloudFront for content delivery.",
+                "Implemented a page views counter using AWS Lambda, API Gateway, and Amazon DynamoDB"],
         github_link: "https://github.com/jdavid19/resume-website-v2/tree/main"
-    },
-        { name: "Python Project with Boto3", 
-        details: `A Python application that utilizes the Boto3 library (AWS SDK for Python) to interact with various AWS services programmatically.
-                The application is based on my resume website.`,
-        github_link: "https://github.com/jdavid19/codepipeline-resume-website"
     },
         // Add more project data as needed
     ];
 
     projectData.forEach(project => {
-        // Create list item
-        const item = document.createElement("li");
-        // Create a span for the project name and set its text content
+        // Create div and paragraph
+        const item = document.createElement("div");
+        const textParagraph = document.createElement("p");
+        textParagraph.classList.add("project-details");
+
+        // Create a span for styling and anchor for the project name and set its text content
         const projectSpan = document.createElement("span");
-        projectSpan.textContent = project.name;
+        const projectName = document.createElement("a");
+        projectName.href = "https://www.jd-espiritu.website";
+        projectName.textContent = project.name;
+        projectName.target = "_blank"
+        projectName.style.textDecoration = "none";
+        projectName.style.color = 'black';
         projectSpan.classList.add("project");
+        projectSpan.appendChild(projectName);
 
-        // Create a paragraph for the project details
-        const projectDetails = document.createElement("p");
-        projectDetails.classList.add("project-details");
-
+        // GitHub Link
         const githubLink = document.createElement("a");
         githubLink.href = project.github_link;
         githubLink.textContent = "Link to GitHub repository";
@@ -215,15 +215,25 @@ document.addEventListener("DOMContentLoaded", function() {
         githubLink.style.textDecoration = "none";
         githubLink.style.color = 'blue';
 
-        // Create Show/Hide Button
-        const toggleText = createToggleText('View details', [project.details, githubLink], 'fa fa-arrow-right', 'fa fa-arrow-left');
+        const projectElement = document.createElement("ul");
+
+        // Create list items for each project details
+        project.details.forEach(detail => {
+            const projectDetailItem = document.createElement("li");
+            projectDetailItem.textContent = detail;
+            projectElement.appendChild(projectDetailItem);
+            projectElement.appendChild(githubLink);
+        });
         
+        // Create Show/Hide Button
+        const toggleText = createToggleText('View details', [projectElement], 'fa fa-arrow-right', 'fa fa-arrow-left');
+
         // Append button to paragraph
-        projectDetails.appendChild(toggleText);
+        textParagraph.appendChild(toggleText);
         
         // Append the span, project details
         item.appendChild(projectSpan);
-        item.appendChild(projectDetails);
+        item.appendChild(textParagraph);
         
         // Append the list item to the projectTimeline
         projectTimeline.appendChild(item);
@@ -236,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     employmentData.forEach(emp => {
-        const item = document.createElement("li");
+        const item = document.createElement("div");
         
         // Create a span for the employment and set its text content
         const employmentSpan = document.createElement("span");
@@ -244,7 +254,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Add a class to the span for styling
         employmentSpan.classList.add("employment");
         // Set the text content of the list item
-        const employmentDetails = document.createElement("p")
+        const employmentDetails = document.createElement("li")
         // Add a class to the paragraph for styling
         employmentDetails.classList.add("employment-details")
 
