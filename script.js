@@ -34,20 +34,28 @@ document.addEventListener('DOMContentLoaded', () => {
    // View Counter
     async function updateCounter(page) {
         try {
-            const response = await fetch(`https://api.jd-espiritu.website/counter?page=${page}`)
-            if (response.ok) {
-                const data = await response.json();
-                const counterElement = document.getElementById('view-count');
-                counterElement.innerText = data.body.count;
-                counterElement.style.color = 'aqua';
-            } else {
-                console.error('Error fetching view count:', response.statusText);
+            const response = await fetch(`https://xs51dk5m88.execute-api.us-east-1.amazonaws.com/test/counter/${page}`);
+            // Check if the response is okay
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
-        } catch (error) {
-            console.error('Error:', error);
+            
+            const responseData = await response.json();
+                const data = JSON.parse(responseData.body);
+
+                // Ensure data has the 'count' property
+                if (data && data.count !== undefined) {
+                    const counterElement = document.getElementById('view-count');
+                    counterElement.innerText = data.count;
+                    counterElement.style.color = 'aqua';
+                } else {
+                    console.error('Invalid response format:', data);
+                }
+            } catch (error) {
+                console.error('Error fetching page count:', error);
+            }
         }
-    }
-    updateCounter('home');
+    updateCounter('home');  // Pass the page name here
 
 
     // Get the button
