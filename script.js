@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     menuLinks.forEach(link => {
         link.addEventListener('click', toggleMenu);
     });
-    
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -34,31 +33,29 @@ document.addEventListener('DOMContentLoaded', () => {
    // View Counter
     async function updateCounter(page) {
         try {
-            const response = await fetch(`https://xs51dk5m88.execute-api.us-east-1.amazonaws.com/test/counter/${page}`);
-            // Check if the response is okay
+            const response = await fetch(`https://api.jd-espiritu.website/counter/${page}`);
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
+
             const responseData = await response.json();
-                const data = JSON.parse(responseData.body);
+            const data = JSON.parse(responseData.body);
 
-                // Ensure data has the 'count' property
-                if (data && data.count !== undefined) {
-                    const counterElement = document.getElementById('view-count');
-                    counterElement.innerText = data.count;
-                    counterElement.style.color = 'aqua';
-                } else {
-                    console.error('Invalid response format:', data);
-                }
-            } catch (error) {
-                console.error('Error fetching page count:', error);
+            if (data && data.count !== undefined) {
+                const counterElement = document.getElementById('view-count');
+                counterElement.innerText = data.count;
+                counterElement.style.color = 'aqua';
+            } else {
+                console.error('Invalid response format:', data);
             }
+        } catch (error) {
+            console.error('Error fetching page count:', error);
         }
-    updateCounter('home');  // Pass the page name here
+    }
+    updateCounter('home');
 
-
-    // Get the button
+    // Back to Top Button
     const backToTopButton = document.getElementById("backToTop");
 
     // When the user scrolls down 100px from the top of the document, show the button
