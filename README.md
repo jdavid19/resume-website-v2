@@ -49,7 +49,7 @@ Before you begin, make sure you have the following:
 
    For example, if you're requesting a certificate for "www.example.com", you might want to add the name "example.com" so that customers can reach your site by either name.
 
-   In this certificate, I used a wildcard (e.g., *.jd-espiritu.website) and jd-espiritu.website. My purpose on using a wildcard is that I want to secure multiple subdomains with a single certificate. For example, a wildcard certificate for *.example.com can secure www.example.com, api.example.com, blog.example.com, etc., without needing to obtain and manage individual certificates for each subdomain. Later on, I will use api subdomain for my custom domain name for my API in API Gateway.
+   In this certificate, I used a wildcard (e.g., *.jd-espiritu.website) and jd-espiritu.website. My purpose on using a wildcard is to secure multiple subdomains with a single certificate. For example, a wildcard certificate for *.example.com can secure www.example.com, api.example.com, blog.example.com, etc., without needing to obtain and manage individual certificates for each subdomain. Later on, I will use api subdomain for my custom domain name for my API in API Gateway.
    
 4. Complete the validation process (e.g., via [DNS validation](https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html#setting-up-dns-validation)). 
 
