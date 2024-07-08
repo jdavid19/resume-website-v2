@@ -81,52 +81,42 @@ import boto3
 
 dynamodb = boto3.client('dynamodb')
 
+# Define a list of valid pages
+VALID_PAGE = 'home'
+
 def lambda_handler(event, context):
+    page = event.get('pathParameters', {}).get('page', '')
+
+    # Validate the page parameter
+    if not page or not page.isalnum() or page not in VALID_PAGE:
+        return {
+            'statusCode': 400,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'body': json.dumps({'error': 'Invalid page parameter'})
+        }
+
     try:
-        if 'queryStringParameters' not in event or 'page' not in event['queryStringParameters']:
-            return {
-                'statusCode': 400,
-                'headers': {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Origin': '*'
-                },
-                'body': json.dumps({'error': 'Missing page parameter'})
-            }
-
-        page = event['queryStringParameters']['page']
-
-        # Retrieve current count or initialize if it doesn't exist
-        response = dynamodb.get_item(
+        response = dynamodb.update_item(
             TableName='PageCounter',
-            Key={'page': {'S': page}}
+            Key={'page': {'S': page}},
+            UpdateExpression='ADD view_count :increment',
+            ExpressionAttributeValues={':increment': {'N': '1'}},
+            ReturnValues='UPDATED_NEW'
         )
 
-        if 'Item' in response:
-            count = int(response['Item']['count']['N']) + 1
-            dynamodb.update_item(
-                TableName='PageCounter',
-                Key={'page': {'S': page}},
-                UpdateExpression='SET #count_attr = :val1',
-                ExpressionAttributeNames={'#count_attr': 'count'},
-                ExpressionAttributeValues={':val1': {'N': str(count)}}
-            )
-        else:
-            count = 1
-            dynamodb.put_item(
-                TableName='PageCounter',
-                Item={'page': {'S': page}, 'count': {'N': str(count)}}
-            )
+        view_count = response['Attributes']['view_count']['N']
 
-        # Return a proper JSON response
         return {
             'statusCode': 200,
             'headers': {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*'
             },
-            'body': json.dumps({'page': page, 'count': count})
+            'body': json.dumps({'page': page, 'count': view_count})
         }
-
     except Exception as e:
         return {
             'statusCode': 500,
@@ -144,11 +134,24 @@ def lambda_handler(event, context):
 1. Go to the [API Gateway](https://console.aws.amazon.com/apigateway/) console.
 2. Create a new API.
 3. Create a new resource named /counter.
-4. Create a new GET method for the /counter resource.
-5. Set the integration type to Lambda Function and select your Lambda function.
-6. Deploy the API to a new stage (e.g., prod).
-7. Enable CORS for the API.
-8. Configure a custom domain for the API:
+4. Create a new resource named {page}
+5. Create a new GET method for the {page} resource.
+6. Set the integration type to Lambda Function and select your Lambda function.
+7. After setting up the integration type, add a mapping template on Integration Request Settings.
+
+   Content-Type: application/json
+
+   Template Body:
+   ```
+   {
+     "pathParameters": {
+       "page": "$input.params('page')"
+     }
+   }
+   ```
+9. Deploy the API to a new stage (e.g., prod).
+10. Enable CORS for the API.
+11. Configure a custom domain for the API:
 - Go to the API Gateway Custom Domain Names section.
 - Create a new custom domain (I will now use my subdomain that I secured using AWS Certificate Manager) and specify the public certificate requested earlier.
 - Associate it with your API stage.
