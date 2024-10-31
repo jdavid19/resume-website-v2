@@ -58,6 +58,10 @@ nav {
     display: inline-block;
 }
 
+.container ul {
+    font-size: 12px;
+}
+
 nav ul {
     list-style: none;
     padding: 8px 12px;
