@@ -31,29 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
    // View Counter
-    async function updateCounter(page) {
-        try {
-            const response = await fetch(`https://api.jd-espiritu.website/counter/${page}`);
+    // async function updateCounter(page) {
+    //     try {
+    //         const response = await fetch(`https://api.jd-espiritu.website/counter/${page}`);
             
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
+    //         if (!response.ok) {
+    //             throw new Error(`HTTP error! status: ${response.status}`);
+    //         }
 
-            const responseData = await response.json();
-            const data = JSON.parse(responseData.body);
+    //         const responseData = await response.json();
+    //         const data = JSON.parse(responseData.body);
 
-            if (data && data.count !== undefined) {
-                const counterElement = document.getElementById('view-count');
-                counterElement.innerText = data.count;
-                counterElement.style.color = 'aqua';
-            } else {
-                console.error('Invalid response format:', data);
-            }
-        } catch (error) {
-            console.error('Error fetching page count:', error);
-        }
-    }
-    updateCounter('home');
+    //         if (data && data.count !== undefined) {
+    //             const counterElement = document.getElementById('view-count');
+    //             counterElement.innerText = data.count;
+    //             counterElement.style.color = 'aqua';
+    //         } else {
+    //             console.error('Invalid response format:', data);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error fetching page count:', error);
+    //     }
+    // }
+    // updateCounter('home');
 
     // Back to Top Button
     const backToTopButton = document.getElementById("backToTop");
@@ -66,6 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
             backToTopButton.style.display = "none";
         }
     };
+
+    function updateHeight() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      window.addEventListener('resize', updateHeight);
+      updateHeight();
+      
 
     // When the user clicks on the button, scroll to the top of the document
     backToTopButton.onclick = function() {
