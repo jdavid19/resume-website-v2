@@ -263,7 +263,7 @@ main h2 {
         font-size: 12px;
     }
     .page {
-        height: 100dvh;
+        min-height: 100vh;
     }
 }
 
