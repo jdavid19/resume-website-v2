@@ -67,14 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    function updateHeight() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      }
-      window.addEventListener('resize', updateHeight);
-      updateHeight();
-      
-
     // When the user clicks on the button, scroll to the top of the document
     backToTopButton.onclick = function() {
         window.scrollTo({top: 0, behavior: 'smooth'});
