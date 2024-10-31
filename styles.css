@@ -104,6 +104,7 @@ nav ul li:hover::after{
     line-height: 2;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
+    transform: translateZ(0);
 }
 
 main h1 {
