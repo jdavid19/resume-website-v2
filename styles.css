@@ -242,7 +242,7 @@ main h2 {
     .container {
         width: 300px;
     }
-    .container ul li {
+    .container ul {
         font-size: 12px;
     }
     .footer-container {
